@@ -7,13 +7,6 @@
 {% block app_content %}
     <h1>Email your phrases</h1>
 
-<!--     {{ wtf.quick_form(form) }} -->
-
-    <form class="form fsorm-horizontal" method="post" role="form">
-        {{ form.hidden_tag() }}
-        {{ wtf.form_field(form.email) }}
-        {{ render_field_with_errors(form.submit, onclick="loading();") }}
-
-    </form>
+    {{ wtf.quick_form(form) }}
 
 {% endblock %}

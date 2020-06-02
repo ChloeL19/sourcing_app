@@ -1,6 +1,6 @@
 from flask import render_template, redirect, url_for, flash
 from app import app
-from app.forms import Form, EmailForm
+from app.forms import EmailForm
 from app.email import send_email
 import os
 
@@ -9,13 +9,15 @@ resp = []
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
 def index():
-	form = Form()
-	if form.validate_on_submit():
-		s = Word(form.input_phrase.data)
-		resp.append(s.replace())
-		return redirect(url_for('response'))
-	return render_template('index.html', title='phrase input', form=form)
+	return render_template('index.html', title='Sourcing Home')
 
+@app.route('/one_pagers')
+def one_pagers():
+	return render_template('one_pagers.html', title="One-Pagers")
+
+@app.route('/companies')
+def companies():
+	return render_template('companies.html', title="Companies")
 
 @app.route('/response')
 def response():
