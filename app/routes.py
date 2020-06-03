@@ -2,9 +2,8 @@ from flask import render_template, redirect, url_for, flash
 from app import app
 from app.forms import EmailForm
 from app.email import send_email
+from app.pitch import Pitch
 import os
-
-resp = []
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
@@ -30,17 +29,17 @@ def response():
 @app.route('/email_form', methods=['GET', 'POST'])
 def email_form():
 	form = EmailForm()
-	if form.validate_on_submit() and resp:
-		print(resp[-1])
-		text_body = resp[-1][0] + '\n' + resp[-1][1]
-		text_html = '<p>'+resp[-1][0]+'</p>' + '<p>'+resp[-1][1]+'</p>'
-		send_email('Your AI-Twisted Phrase',
-			sender=app.config['ADMINS'][0],
-			recipients=[form.email.data], #get from form,
-			text_body=text_body,
-			html_body=text_html)
+	if form.validate_on_submit():
+		# print(resp[-1])
+		# text_body = resp[-1][0] + '\n' + resp[-1][1]
+		# text_html = '<p>'+resp[-1][0]+'</p>' + '<p>'+resp[-1][1]+'</p>'
+		# send_email('Your AI-Twisted Phrase',
+		# 	sender=app.config['ADMINS'][0],
+		# 	recipients=[form.email.data], #get from form,
+		# 	text_body=text_body,
+		# 	html_body=text_html)
 		return redirect(url_for('email_sent'))
-	return render_template('email_form.html', title='Email your phrases', form=form)
+	return render_template('email_form.html', title='Compose Your Email', form=form)
 
 @app.route('/email_sent')
 def email_sent():

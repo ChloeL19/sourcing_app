@@ -22,13 +22,16 @@ class EmailForm(FlaskForm):
 	# 		   company description and basic background info (like level of funding)
 	# 
 
+	# if my next version is built in React, use auto-complete forms to make it easier
+	# to find contact info for the company: https://www.digitalocean.com/community/tutorials/react-react-autocomplete
+
 
 	your_name = StringField('Your Name', validators=[DataRequired()])
 	your_email = StringField('Your Email', validators=[DataRequired()])
 	company_name = StringField('Company Name', validators=[DataRequired()])
 	contact_person_name = StringField('Contact Person Name', validators=[DataRequired()])
 	contact_person_email = StringField('Contact Person Email', validators=[DataRequired()])
-	where_find = StringField('I found Hue AI through...', validators=[DataRequired()])
+	where_find = StringField('I found [Company] through...', validators=[DataRequired()])
 	impressed_by = StringField('...and was impressed by... ', validators=[DataRequired()])
 	vertical = StringField('We also have multiple partners investing in the....', validators=[DataRequired()])
 	submit = SubmitField('Send draft to myself')
