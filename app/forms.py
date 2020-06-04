@@ -24,7 +24,9 @@ class EmailForm(FlaskForm):
 
 	# if my next version is built in React, use auto-complete forms to make it easier
 	# to find contact info for the company: https://www.digitalocean.com/community/tutorials/react-react-autocomplete
-
+	# ideally would like form to be dynamic and change as user enters data
+	# or maybe use a multistep form: https://css-tricks.com/the-magic-of-react-based-multi-step-forms/
+	# some react-bootstrap examples: https://github.com/react-bootstrap/code-sandbox-examples/blob/master/README.md
 
 	your_name = StringField('Your Name', validators=[DataRequired()])
 	your_email = StringField('Your Email', validators=[DataRequired()])

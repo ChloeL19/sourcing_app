@@ -21,5 +21,19 @@ class Pitch:
 		Returns a string that will be the message of the sourcing email draft.
 
 		"""
-		pass
+		msg = "Hi"+ "{}, \n\
+		I hope this finds you well. I’m {}, a member of the Harvard Capital Partners (HUCP),\
+		an undergraduate club that connects promising start-ups with our ~40 angel and VC partners\
+		who invest in early-stage start-ups.\n \
+		I found {} through the Harvard Innovation Labs and was impressed by how you’re \
+		{}. We also have multiple\
+		partners investing in the {} that may be interested. If you're interested, I’d enjoy video\
+		chatting briefly when convenient to share more about HUCP’s investing partners and learn more about\
+		 {}.\n\
+		Hope to talk with you soon.\n \
+		Best,\n\
+		{}".format(contact_person_name, your_name, company_name, where_find, vertical, company_name, 
+			your_name)
+
+		return msg
 
