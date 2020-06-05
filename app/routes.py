@@ -32,7 +32,7 @@ def response():
 def email_form():
 	form = EmailForm()
 	if form.validate_on_submit():
-		# print(resp[-1])
+		# include a subject!!!!!
 		draft, draft_html = Pitch(form.your_name.data, form.company_name.data, form.contact_person_name.data,
 			form.where_find.data, form.impressed_by.data, form.vertical.data).compose_email()
 		meta = 'Send final draft to {} at {}\n'.format(form.contact_person_name.data,
