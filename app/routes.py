@@ -31,13 +31,17 @@ def email_form():
 	form = EmailForm()
 	if form.validate_on_submit():
 		# print(resp[-1])
-		# text_body = resp[-1][0] + '\n' + resp[-1][1]
-		# text_html = '<p>'+resp[-1][0]+'</p>' + '<p>'+resp[-1][1]+'</p>'
-		# send_email('Your AI-Twisted Phrase',
-		# 	sender=app.config['ADMINS'][0],
-		# 	recipients=[form.email.data], #get from form,
-		# 	text_body=text_body,
-		# 	html_body=text_html)
+		draft = Pitch(form.you_name.data, form.company_name.data, form.contact_person_name.data,
+			form.where_find.data, form.impressed_by.data, form.vertical.data)
+		meta = 'Send final draft to {} at {}\n'.format(form.contact_person_name.data,
+			form.contact_person_email.data)
+		text_body = meta + draft
+		text_html = '<p>'+meta+'<p>'+'<p>'+draft+'<p>'
+		send_email('Your Sourcing Email Draft',
+			sender=app.config['ADMINS'][0],
+			recipients=[form.your_email.data], #get from form,
+			text_body=text_body,
+			html_body=text_html)
 		return redirect(url_for('email_sent'))
 	return render_template('email_form.html', title='Compose Your Email', form=form)
 
