@@ -7,6 +7,20 @@
 {% block app_content %}
     <h1>Create Your Sourcing Email</h1>
 
-    {{ wtf.quick_form(form) }}
+    <!-- {{ wtf.quick_form(form) }} -->
+
+    <form class="form fsorm-horizontal" method="post" role="form">
+        {{ form.hidden_tag() }}
+        {{ wtf.form_field(form.your_name) }}
+        {{ wtf.form_field(form.your_email) }}
+        {{ wtf.form_field(form.company_name) }}
+        {{ wtf.form_field(form.contact_person_name) }}
+        {{ wtf.form_field(form.contact_person_email) }}
+        {{ wtf.form_field(form.where_find) }}
+        {{ wtf.form_field(form.impressed_by) }}
+        {{ wtf.form_field(form.vertical) }}
+        {{ render_field_with_errors(form.submit, onclick="loading();") }}
+
+    </form>
 
 {% endblock %}

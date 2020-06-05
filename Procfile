@@ -1,1 +1,1 @@
-web: gunicorn phraseGen:app
+web: gunicorn sourcing_app:app
